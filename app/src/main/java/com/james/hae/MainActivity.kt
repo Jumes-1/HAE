@@ -13,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.james.hae.apps.AppsActivity
 import com.james.hae.databinding.ActivityMainBinding
 import kotlinx.coroutines.flow.collect
 
@@ -55,6 +56,7 @@ class MainActivity : AppCompatActivity() {
 		}
 
 		binding.appsButton.setOnClickListener {
+			startActivity(Intent(this, AppsActivity::class.java))
 		}
 	}
 
