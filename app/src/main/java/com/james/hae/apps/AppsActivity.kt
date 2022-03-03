@@ -3,6 +3,7 @@ package com.james.hae.apps
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +21,8 @@ class AppsActivity : AppCompatActivity(), AppLauncher {
 	@SuppressLint("QueryPermissionsNeeded")
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
+
+		supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 		binding = DataBindingUtil.setContentView(this, R.layout.activity_apps)
 		binding.lifecycleOwner = this
@@ -49,6 +52,13 @@ class AppsActivity : AppCompatActivity(), AppLauncher {
 		packageManager
 			.getLaunchIntentForPackage(packageName)
 			?.let { startActivity(it) }
+	}
+
+	override fun onOptionsItemSelected(item: MenuItem): Boolean {
+		when (item.itemId) {
+			android.R.id.home -> onBackPressed()
+		}
+		return super.onOptionsItemSelected(item)
 	}
 
 }
